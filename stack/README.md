@@ -45,3 +45,34 @@ Write a function that, given a string S consisting of N characters containing in
 
 In your solution, focus on correctness. The performance of your solution will not be the focus of the assessment.
 # Solution
+To solve this problem, you can follow these high-level steps:
+
+1. Initialize an empty stack to simulate the stack machine's behavior.
+2. Split the input string S into individual words or tokens. You can use the split() method to split the string based on whitespace.
+3. Iterate through each token in the split string.
+4. For each token, check if it represents a valid operation for the stack machine. Valid operations include:
+     - Numeric values: Push the value onto the stack.
+     - "DUP": Duplicate the top value on the stack and push the duplicate onto the stack.
+     - "POP": Remove the top value from the stack.
+     - "+": Pop the top two values from the stack, add them, and push the result onto the stack.
+     - "-": Pop the top two values from the stack, subtract the second value from the first, and push the result onto the stack.
+5. After processing all the tokens, check the state of the stack. If the stack is empty, return -1 to indicate an error. Otherwise, return the top value on the stack as the result of the stack machine's computation.
+
+Here's a high-level example of how this solution would work:
+
+Input: "13 DUP 4 POP 5 DUP + DUP + -"
+
+- Initialize an empty stack: []
+- Split the input string into tokens: ["13", "DUP", "4", "POP", "5", "DUP", "+", "DUP", "+", "-"]
+- Iterate through each token:
+    - "13": Push 13 onto the stack: [13]
+    - "DUP": Duplicate the top value on the stack (13) and push the duplicate onto the stack: [13, 13]
+    - "4": Push 4 onto the stack: [13, 13, 4]
+    - "POP": Remove the top value from the stack: [13, 13]
+    - "5": Push 5 onto the stack: [13, 13, 5]
+    - "DUP": Duplicate the top value on the stack (5) and push the duplicate onto the stack: [13, 13, 5, 5]
+    - "+": Pop the top two values from the stack (5, 5), add them (10), and push the result onto the stack: [13, 13, 10]
+    - "DUP": Duplicate the top value on the stack (10) and push the duplicate onto the stack: [13, 13, 10, 10]
+    - "+": Pop the top two values from the stack (10, 10), add them (20), and push the result onto the stack: [13, 13, 20]
+    - "-": Pop the top two values from the stack (20, 13), subtract the second value from the first (7), and push the result onto the stack: [13, 7]
+- After processing all the tokens, check the state of the stack. The top value is 7, so the result of the stack machine's computation is 7.
