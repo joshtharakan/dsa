@@ -17,7 +17,7 @@
 # IDE/Editor folders
 .idea
 .vscode
-.code-workspace
+*.code-workspace
 
 # Log files
 *.log
