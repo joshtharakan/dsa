@@ -1,0 +1,5 @@
+{"image":"mcr.microsoft.com/devcontainers/go",
+"features": {
+    "ghcr.io/prulloac/devcontainer-features/commitizen:1": {}
+}
+}
